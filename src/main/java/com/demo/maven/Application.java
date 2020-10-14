@@ -2,6 +2,7 @@ package com.demo.maven;
 
 import java.util.ArrayList;
 import java.util.List;
+import org.apache.commons.lang3.StringUtils;
 
 public class Application {
     
@@ -14,6 +15,9 @@ public class Application {
     	System.out.println ("Starting Application");
 		Application app = new Application();
 		app.greet();
+		
+		int count = app.countWords("I have four words");
+		System.out.println("Word count: "+count);
     }
 	
 	public void greet() {
@@ -23,5 +27,10 @@ public class Application {
 		for (String greeting : greetings) {
 			System.out.println("Greetings: " + greeting);
 		}
+	}
+	
+	public int countWords(String words) {
+		String[] separateWords = StringUtils.split(words, ' ');
+		return (separateWords == null)?0:separateWords.length;
 	}
 }
